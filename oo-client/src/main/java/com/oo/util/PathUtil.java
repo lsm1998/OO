@@ -9,4 +9,10 @@ public class PathUtil
         URL url = PathUtil.class.getClassLoader().getResource("");
         return url.getPath() + path;
     }
+
+    public static String imgPath(String imgName)
+    {
+        URL url = PathUtil.class.getClassLoader().getResource("");
+        return url.getPath() + "/img/" + imgName;
+    }
 }

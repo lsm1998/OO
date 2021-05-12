@@ -33,6 +33,7 @@ import com.oo.domain.User;
 import com.oo.mapper.UserMapper;
 import com.oo.server.App;
 import com.oo.server.Client;
+import com.oo.util.PathUtil;
 
 /**
  * 作者：刘时明
@@ -55,9 +56,9 @@ public class LoginUI extends JFrame implements MouseListener, ActionListener, It
     {
         setUndecorated(true);
         Toolkit toolkit = Toolkit.getDefaultToolkit();
-        Image image = toolkit.getImage("img/tb.png");
+        Image image = toolkit.getImage(PathUtil.imgPath("tb.png"));
         setIconImage(image);
-        bg = new JLabel(new ImageIcon("src\\main\\resources\\img\\loginUI3.png"));
+        bg = new JLabel(new ImageIcon(PathUtil.imgPath("loginUI3.png")));
         bg.setLayout(null);
         bg.addMouseMotionListener(this);
         add(bg);
@@ -73,12 +74,12 @@ public class LoginUI extends JFrame implements MouseListener, ActionListener, It
         lblClose.addMouseListener(this);
         bg.add(lblMin);
         bg.add(lblClose);
-        lblHead = new JLabel(new ImageIcon("img/tx.png"));
+        lblHead = new JLabel(new ImageIcon(PathUtil.imgPath("tx.png")));
         lblReg = new JLabel("注册账号");
         lblForgetPwd = new JLabel("忘记密码");
         userNamecb = new JComboBox<>();
         txtPassword = new JPasswordField();
-        btnLogin = new JButton(new ImageIcon("src\\main\\resources\\img\\LoginButton.png"));
+        btnLogin = new JButton(new ImageIcon(PathUtil.imgPath("LoginButton.png")));
         btnLogin.setFocusPainted(false);
         btnLogin.setBorderPainted(false);
         cbpwd = new JCheckBox("记住密码");
@@ -93,10 +94,10 @@ public class LoginUI extends JFrame implements MouseListener, ActionListener, It
 
         lblReg.setBounds(12, 290, 80, 30);
 
-        JLabel code = new JLabel(new ImageIcon("src\\main\\resources\\img\\acount1.png"));
+        JLabel code = new JLabel(new ImageIcon(PathUtil.imgPath("acount1.png")));
         code.setBounds(85, 170, 15, 15);
         bg.add(code);
-        JLabel pass = new JLabel(new ImageIcon("src\\main\\resources\\img\\password.png"));
+        JLabel pass = new JLabel(new ImageIcon(PathUtil.imgPath("password.png")));
         pass.setBounds(85, 205, 15, 15);
         bg.add(pass);
 
