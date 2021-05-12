@@ -22,9 +22,9 @@ public class App
 
     public static void main(String[] args)
     {
-        //new LoginUI().setVisible(true);
+        new LoginUI().setVisible(true);
         Sound sound=context.getBean(Sound.class);
-        sound.play("理想三旬");
+        // sound.play("理想三旬");
         sound.play("鸽子");
     }
 }

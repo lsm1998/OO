@@ -1,5 +1,6 @@
 package com.oo.bean;
 
+import com.oo.util.PathUtil;
 import javazoom.jl.player.Player;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
@@ -20,10 +21,10 @@ public class Sound
     @Async
     public void play(String filePath)
     {
-        filePath = "src\\main\\resources\\sound\\" + filePath + ".mp3";
+        filePath = PathUtil.getPathByResources("/sound/" + filePath) + ".mp3";
         try
         {
-            Player player=new Player(new BufferedInputStream(new FileInputStream(new File(filePath))));
+            Player player = new Player(new BufferedInputStream(new FileInputStream(filePath)));
             player.play();
             player.close();
         } catch (Exception e)

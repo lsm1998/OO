@@ -6,7 +6,13 @@
 
     <groupId>org.example</groupId>
     <artifactId>OO</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>oo-server</module>
+        <module>oo-client</module>
+        <module>oo-common</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>15</maven.compiler.source>

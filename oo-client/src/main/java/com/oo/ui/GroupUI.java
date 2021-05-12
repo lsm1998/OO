@@ -131,7 +131,7 @@ public class GroupUI extends JFrame
 
     class DataModel extends AbstractListModel<Object>
     {
-        java.util.List<Group> data;
+        List<Group> data;
 
         public DataModel(List<Group> data)
         {
