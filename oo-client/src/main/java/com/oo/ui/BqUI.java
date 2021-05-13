@@ -1,5 +1,7 @@
 package com.oo.ui;
 
+import com.oo.util.PathUtil;
+
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.FlowLayout;
@@ -11,6 +13,8 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
+import static com.oo.util.PathUtil.resourcesPath;
 
 public class BqUI extends JFrame implements MouseListener
 {
@@ -27,12 +31,13 @@ public class BqUI extends JFrame implements MouseListener
 		Container con = getContentPane();
 		con.setLayout(new FlowLayout(FlowLayout.LEFT));
 		con.setBackground(Color.WHITE);
-		File file = new File("src\\main\\resources\\bq");
+
+		File file = new File(resourcesPath("/bq"));
 		iconlist = file.list();
 		bqicon = new JLabel[iconlist.length];
 		for (int i = 0; i < iconlist.length; i++)
 		{
-			bqicon[i] = new JLabel(new ImageIcon("src\\main\\resources\\bq\\" + iconlist[i]));
+			bqicon[i] = new JLabel(new ImageIcon(PathUtil.imgPath(iconlist[i])));
 			bqicon[i].setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
 			bqicon[i].addMouseListener(this);
 			add(bqicon[i]);

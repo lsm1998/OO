@@ -24,7 +24,7 @@ public class App
     {
         new LoginUI().setVisible(true);
         Sound sound=context.getBean(Sound.class);
-        // sound.play("理想三旬");
-        sound.play("鸽子");
+        sound.play("理想三旬");
+        // sound.play("鸽子");
     }
 }

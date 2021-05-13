@@ -13,6 +13,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import javax.swing.*;
 
+import static com.oo.util.PathUtil.imgPath;
+
 public class RegisterUI extends JFrame
 {
     private Icon icon;
@@ -24,7 +26,7 @@ public class RegisterUI extends JFrame
 
     public RegisterUI()
     {
-        icon = new ImageIcon("src\\main\\resources\\img\\头像1.jpg");
+        icon = new ImageIcon( imgPath("头像1.jpg"));
         this.setSize(560, 620);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -95,7 +97,7 @@ public class RegisterUI extends JFrame
             if (pass1.equals(pass2))
             {
                 User user = new User();
-                File file=new File("src\\main\\resources\\img\\defaultHeadimg.png");
+                File file=new File(imgPath("defaultHeadimg.png"));
                 try(FileInputStream fis=new FileInputStream(file))
                 {
                     byte[] b=new byte[(int)file.length()];

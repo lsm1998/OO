@@ -12,6 +12,7 @@ import com.oo.domain.User;
 import com.oo.mapper.UserMapper;
 import com.oo.server.App;
 import com.oo.util.ImgUtil;
+import com.oo.util.PathUtil;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -41,7 +42,8 @@ public class MyInfoUI
         w.setTitle("编辑资料");
         w.setSize(330, 550);
         w.setLocationRelativeTo(null);
-        JLabel zc=new JLabel(new ImageIcon("src\\main\\resources\\img\\9.png"));
+
+        JLabel zc=new JLabel(new ImageIcon(PathUtil.imgPath("9.png")));
 
         //JPanel zc = new JPanel();
         zc.setLayout(null);

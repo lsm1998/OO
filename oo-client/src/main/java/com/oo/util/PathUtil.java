@@ -15,4 +15,9 @@ public class PathUtil
         URL url = PathUtil.class.getClassLoader().getResource("");
         return url.getPath() + "/img/" + imgName;
     }
+
+    public static String resourcesPath(String path)
+    {
+        return getPathByResources(path);
+    }
 }

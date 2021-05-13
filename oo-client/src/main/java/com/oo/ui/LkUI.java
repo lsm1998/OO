@@ -13,6 +13,8 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import static com.oo.util.PathUtil.imgPath;
+
 /**
  * 作者：刘时明
  * 日期：2018/9/30 0030
@@ -32,10 +34,11 @@ public class LkUI extends JFrame
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(3);
-        icon = new ImageIcon("src\\main\\resources\\img\\按钮背景.png");
-        icon1 = new ImageIcon("src\\main\\resources\\img\\log.png");
-        icon2 = new ImageIcon("src\\main\\resources\\img\\1.jpg");
-        icon3 = new ImageIcon("src\\main\\resources\\img\\3.png");
+
+        icon = new ImageIcon(imgPath("按钮背景.png"));
+        icon1 = new ImageIcon(imgPath("log.png"));
+        icon2 = new ImageIcon(imgPath("1.png"));
+        icon3 = new ImageIcon(imgPath("3.png"));
         JPanel jp = new JPanel();
         jp.setBounds(0, 0, 900, 600);
         jp.setLayout(null);

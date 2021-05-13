@@ -56,7 +56,7 @@ public class LoginUI extends JFrame implements MouseListener, ActionListener, It
     {
         setUndecorated(true);
         Toolkit toolkit = Toolkit.getDefaultToolkit();
-        Image image = toolkit.getImage(PathUtil.imgPath("tb.png"));
+        Image image = toolkit.getImage(PathUtil.imgPath("logo.png"));
         setIconImage(image);
         bg = new JLabel(new ImageIcon(PathUtil.imgPath("loginUI3.png")));
         bg.setLayout(null);
@@ -153,7 +153,7 @@ public class LoginUI extends JFrame implements MouseListener, ActionListener, It
             user.clear();
             txtPassword.setText("");
             userNamecb.setSelectedItem("");
-            JOptionPane.showMessageDialog(null, "清楚记录");
+            JOptionPane.showMessageDialog(null, "清除记录");
         }
     }
 

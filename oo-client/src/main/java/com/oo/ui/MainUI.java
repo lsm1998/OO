@@ -7,6 +7,7 @@ import com.oo.mapper.FriendsMapper;
 import com.oo.mapper.GroupMapper;
 import com.oo.mapper.UserMapper;
 import com.oo.server.App;
+import com.oo.util.PathUtil;
 
 import javax.swing.*;
 import java.awt.*;
@@ -44,9 +45,9 @@ public class MainUI extends JFrame implements MouseListener
         jLists = new JList[groupList.size()];
         friendsList = new List[groupList.size()];
         this.setResizable(false);
-        this.setIconImage(new ImageIcon("src\\main\\resources\\img\\logo.png").getImage());
+        this.setIconImage(new ImageIcon(PathUtil.imgPath("logo.png")).getImage());
         this.setTitle("oo");
-        bgImg = new JLabel(new ImageIcon("src\\main\\resources\\img\\MainBg.jpg"));
+        bgImg = new JLabel(new ImageIcon(PathUtil.imgPath("MainBg.png")));
         bgImg.setLayout(new BorderLayout());
         // 背景透明
         bgImg.setOpaque(false);
@@ -85,13 +86,13 @@ public class MainUI extends JFrame implements MouseListener
 
         JTextField findText = new JTextField(8);
         findText.setOpaque(false);
-        JButton findBtn = new JButton(new ImageIcon("src\\main\\resources\\img\\CheckBut.png"));
+
+        JButton findBtn = new JButton(new ImageIcon(PathUtil.imgPath("CheckBut.png")));
         findBtn.setFocusPainted(false);
         findBtn.setBorderPainted(false);
         findBtn.setOpaque(false);
         findBtn.setContentAreaFilled(false);
-
-        JButton btn1 = new JButton(new ImageIcon("src\\main\\resources\\img\\starBut.png"));
+        JButton btn1 = new JButton(new ImageIcon(PathUtil.imgPath("starBut.png")));
         btn1.setFocusPainted(false);
         btn1.setBorderPainted(false);
         btn1.setOpaque(false);
