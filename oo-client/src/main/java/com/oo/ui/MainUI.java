@@ -231,7 +231,7 @@ public class MainUI extends JFrame implements MouseListener
                     if (jLists[i].getSelectedIndex() >= 0)
                     {
                         System.out.println("开始聊天，好友：" + friendInfo.getNickName());
-                        //openChat();
+                        // openChat();
                     }
                 }
             }

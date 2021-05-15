@@ -12,6 +12,7 @@
         <module>oo-server</module>
         <module>oo-client</module>
         <module>oo-common</module>
+        <module>qq</module>
     </modules>
 
     <properties>
