@@ -33,17 +33,18 @@ public class MyInfoUI
     private UserMapper userMapper = App.context.getBean(UserMapper.class);
     private JPasswordField passwordField;
     private MainUI mainUI;
+    private JFrame w;
 
-    public MyInfoUI(User user,MainUI mainUI)
+    public MyInfoUI(User user, MainUI mainUI)
     {
         this.user = user;
-        this.mainUI=mainUI;
-        JFrame w = new JFrame();
+        this.mainUI = mainUI;
+        w = new JFrame();
         w.setTitle("编辑资料");
         w.setSize(330, 550);
         w.setLocationRelativeTo(null);
 
-        JLabel zc=new JLabel(new ImageIcon(PathUtil.imgPath("9.png")));
+        JLabel zc = new JLabel(new ImageIcon(PathUtil.imgPath("9.png")));
 
         //JPanel zc = new JPanel();
         zc.setLayout(null);
@@ -143,11 +144,11 @@ public class MyInfoUI
         tx1.setIcon(icon1);
         tx1.setBounds(101, 265, 60, 60);
         zc.add(tx1);
-        JLabel passlbl=new JLabel("密码");
-        passwordField=new JPasswordField();
+        JLabel passlbl = new JLabel("密码");
+        passwordField = new JPasswordField();
 
-        passlbl.setBounds(31,370,50,30);
-        passwordField.setBounds(121,370,100,30);
+        passlbl.setBounds(31, 370, 50, 30);
+        passwordField.setBounds(121, 370, 100, 30);
         passwordField.setText(user.getPassWord());
         zc.add(passlbl);
         zc.add(passwordField);
@@ -222,8 +223,10 @@ public class MyInfoUI
         user.setBirthDay(str);
         user.setPassWord(new String(passwordField.getPassword()));
         userMapper.updateUser(user);
-        JOptionPane.showMessageDialog(null,"信息修改成功！");
+        JOptionPane.showMessageDialog(null, "信息修改成功！");
         mainUI.lblmyInfo.setIcon(new ImageIcon(user.getHead_img()));
         mainUI.lblmyInfo.setText(user.getNickName() + "[" + user.getAutoGraph() + "]");
+        this.w.setVisible(false);
+        this.w.dispose();
     }
 }

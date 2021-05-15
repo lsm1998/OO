@@ -13,6 +13,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
  */
 public class App
 {
+    private static final boolean isBgm = false;
+
     public static AnnotationConfigApplicationContext context;
 
     static
@@ -23,8 +25,11 @@ public class App
     public static void main(String[] args)
     {
         new LoginUI().setVisible(true);
-        Sound sound=context.getBean(Sound.class);
-        sound.play("理想三旬");
-        // sound.play("鸽子");
+        if (isBgm)
+        {
+            Sound sound = context.getBean(Sound.class);
+            sound.play("理想三旬");
+            // sound.play("鸽子");
+        }
     }
 }

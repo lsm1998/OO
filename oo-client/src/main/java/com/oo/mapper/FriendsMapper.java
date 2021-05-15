@@ -19,12 +19,12 @@ import java.util.List;
 @Transactional
 public interface FriendsMapper
 {
-    @Insert("Insert into Friends(myId,FriendsId,groupId) values(#{myId},#{FriendsId},#{groupId})")
+    @Insert("Insert into t_friends(myId,FriendsId,groupId) values(#{myId},#{FriendsId},#{groupId})")
     int saveFriends(Friends friends);
 
-    @Select("SELECT * FROM friends WHERE myid=#{myid} and Groupid =(SELECT id FROM `group` WHERE groupname = #{group} and accNumber=#{myid})")
+    @Select("SELECT * FROM t_friends WHERE myid=#{myid} and Groupid =(SELECT id FROM `t_group` WHERE groupname = #{group} and accNumber=#{myid})")
     List<Friends> getFriendsByMyAccAndGroupName(@Param("myid") int myid, @Param("group") String group);
 
-    @Select("select * from user where accnumber in(SELECT FriendsId FROM Friends WHERE myid=#{accnumber})")
+    @Select("select * from t_user where accnumber in(SELECT FriendsId FROM t_friends WHERE myid=#{accnumber})")
     List<User> getFriendsByMyAcc(long accnumber);
 }

@@ -3,6 +3,7 @@ package com.oo.server;
 import com.oo.domain.User;
 import com.oo.ui.MainUI;
 
+import javax.swing.*;
 import java.net.InetAddress;
 import java.net.Socket;
 
@@ -26,6 +27,7 @@ public class Client
             new MainUI(user, s).setVisible(true);
         } catch (Exception e)
         {
+            JOptionPane.showMessageDialog(null, "连接服务器失败，请检查网络！");
             e.printStackTrace();
         }
     }

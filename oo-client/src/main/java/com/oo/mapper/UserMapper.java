@@ -19,36 +19,36 @@ import java.util.Vector;
 @Transactional
 public interface UserMapper
 {
-    @Select("select * from user where accNumber=#{accNumber} and passWord=#{passWord}")
+    @Select("select * from t_user where accNumber=#{accNumber} and passWord=#{passWord}")
     User login(User user);
 
-    @Insert("Insert into user(nickName,accNumber,passWord,sex,age,birthDay,autoGraph,head_img) values(#{nickName},#{accNumber},#{passWord},#{sex},#{age},#{birthDay},#{autoGraph},#{head_img})")
+    @Insert("Insert into t_user(nickName,accNumber,passWord,sex,age,birthDay,autoGraph,head_img) values(#{nickName},#{accNumber},#{passWord},#{sex},#{age},#{birthDay},#{autoGraph},#{head_img})")
     int saveUser(User user);
 
-    @Select("select * from user")
+    @Select("select * from t_user")
     List<User> getAll();
 
-    @Select("select * from user where accNumber=#{accNumber}")
+    @Select("select * from t_user where accNumber=#{accNumber}")
     User getUserByAccNumber(int accNumber);
 
-    @Select("select * from user")
+    @Select("select * from t_user")
     Vector<User> getMyFriend(int accNumber);
 
     @Insert("")
     int addFriend(long acc1, long acc2);
 
-    @Update("update user set head_img=#{head_img} where accNumber=#{accNumber}")
+    @Update("update t_user set head_img=#{head_img} where accNumber=#{accNumber}")
     int updateImg(User user);
 
-    @Select("SELECT COUNT(id) FROM `user`")
+    @Select("SELECT COUNT(id) FROM `t_user`")
     long getAccNumber();
 
-    @Select("SELECT * FROM `user` WHERE accNumber in (SELECT Friendsid FROM friends WHERE myid=#{acc} and Groupid in (SELECT id FROM `group` WHERE Groupname=#{groupName}))")
+    @Select("SELECT * FROM `t_user` WHERE accNumber in (SELECT Friendsid FROM t_friends WHERE myid=#{acc} and Groupid in (SELECT id FROM `t_group` WHERE Groupname=#{groupName}))")
     List<User> getFriendByAccAndGroupName(@Param("acc") long acc, @Param("groupName") String groupName);
 
-    @Update("update user set head_img=#{head_img},nickName=#{nickName},sex=#{sex},passWord=#{passWord},birthDay=#{birthDay},autoGraph=#{autoGraph} where accNumber=#{accNumber}")
+    @Update("update t_user set head_img=#{head_img},nickName=#{nickName},sex=#{sex},passWord=#{passWord},birthDay=#{birthDay},autoGraph=#{autoGraph} where accNumber=#{accNumber}")
     int updateUser(User user);
 
-    @Update("update user set flag=#{flag} where accNumber=#{acc}")
+    @Update("update t_user set flag=#{flag} where accNumber=#{acc}")
     int changeFlag(@Param("acc") long acc, @Param("flag") byte flag);
 }
