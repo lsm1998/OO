@@ -52,10 +52,7 @@ public class AudioUtil
      */
     public static SourceDataLine getSourceDataLine() throws LineUnavailableException
     {
-        if (sd != null)
-        {
-            return sd;
-        } else
+        if (sd == null)
         {
             // 2.从音频流获取数据
             dataLineInfo = new Info(SourceDataLine.class, af);
@@ -64,9 +61,8 @@ public class AudioUtil
             sd.open(af);
             // 允许某一数据行执行数据 I/O
             sd.start();
-
-            return sd;
         }
+        return sd;
     }
 
     /**
