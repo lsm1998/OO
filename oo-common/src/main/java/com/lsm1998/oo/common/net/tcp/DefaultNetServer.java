@@ -21,14 +21,13 @@ public class DefaultNetServer implements NetServer
 
     private Selector selector;
 
-    private NetEventHandler handler;
+    private final NetEventHandler handler;
 
     public DefaultNetServer(NetConfig config, NetEventHandler handler) throws IOException
     {
         InetSocketAddress isa = new InetSocketAddress(config.getHost(), config.getPort());
         ServerSocketChannel server = ServerSocketChannel.open();
         server.bind(isa);
-        // 设置非阻塞
         server.configureBlocking(config.getBlock());
         server.register(selector, SelectionKey.OP_ACCEPT);
         this.handler = handler;
