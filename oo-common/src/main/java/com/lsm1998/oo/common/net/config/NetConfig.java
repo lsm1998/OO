@@ -10,7 +10,7 @@ public class NetConfig
 
     private Integer port = 8000;
 
-    private Boolean block = true;
+    private Boolean block = false;
 
     private NetType type = NetType.TCP;
 }

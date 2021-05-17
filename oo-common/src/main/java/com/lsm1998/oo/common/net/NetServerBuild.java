@@ -1,14 +1,15 @@
 package com.lsm1998.oo.common.net;
 
 import com.lsm1998.oo.common.net.config.NetConfig;
-import com.lsm1998.oo.common.net.core.DefaultNetEventHandler;
-import com.lsm1998.oo.common.net.tcp.DefaultNetServer;
+import com.lsm1998.oo.common.net.tcp.DefaultNetEventHandler;
+import com.lsm1998.oo.common.net.tcp.TcpNetServerImpl;
+import com.lsm1998.oo.common.net.udp.UdpNetServerImpl;
 
 import java.io.IOException;
 
 public class NetServerBuild
 {
-    private NetConfig config;
+    private final NetConfig config;
 
     private NetEventHandler eventHandler;
 
@@ -35,7 +36,7 @@ public class NetServerBuild
         return this;
     }
 
-    public NetServerBuild type(Boolean block)
+    public NetServerBuild block(Boolean block)
     {
         this.config.setBlock(block);
         return this;
@@ -53,13 +54,14 @@ public class NetServerBuild
         {
             this.eventHandler = new DefaultNetEventHandler();
         }
-        if (this.config.getType() == NetType.TCP)
+        switch (this.config.getType())
         {
-            return new DefaultNetServer(config, eventHandler);
-        } else if (this.config.getType() == NetType.UDP)
-        {
-            return null;
+            case TCP:
+                return new TcpNetServerImpl(config, eventHandler);
+            case UDP:
+                return new UdpNetServerImpl(config, eventHandler);
+            default:
+                return null;
         }
-        return null;
     }
 }
