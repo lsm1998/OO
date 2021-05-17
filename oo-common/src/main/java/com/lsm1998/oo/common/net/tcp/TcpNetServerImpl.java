@@ -44,16 +44,18 @@ public class TcpNetServerImpl implements NetServer
             for (SelectionKey key : selector.selectedKeys())
             {
                 selector.selectedKeys().remove(key);
-                SocketChannel socketChannel = (SocketChannel) key.channel();
-                TcpNetConnect connect = new TcpNetConnect(socketChannel);
+                SocketChannel socketChannel;
                 // 是否包含客户端请求
                 if (key.isAcceptable())
                 {
-                    handler.accept(connect);
+                    socketChannel = server.accept();
+                    handler.accept(new TcpNetConnect(socketChannel));
                 }
                 // 是否存在读取的数据
                 if (key.isReadable())
                 {
+                    socketChannel = (SocketChannel) key.channel();
+                    TcpNetConnect netConnect = new TcpNetConnect(socketChannel);
                     ByteBuffer buffer = ByteBuffer.allocate(DEFAULT_BUFF_SIZE);
                     int len;
                     List<byte[]> bytesList = new ArrayList<>();
@@ -64,23 +66,23 @@ public class TcpNetServerImpl implements NetServer
                     }
                     if (len == -1)
                     {
-                        handler.close(connect);
+                        handler.close(netConnect);
                         return;
                     }
-                    handler.read(ByteUtil.mergeBytes(bytesList), connect);
+                    handler.read(ByteUtil.mergeBytes(bytesList), netConnect);
                 }
-                if (key.isConnectable())
-                {
-                    handler.close(connect);
-                }
-                if (key.isValid())
-                {
-                    handler.valid(connect);
-                }
-                if (key.isConnectable())
-                {
-                    handler.connect(connect);
-                }
+//                if (key.isConnectable())
+//                {
+//                    handler.close(connect);
+//                }
+//                if (key.isValid())
+//                {
+//                    handler.valid(connect);
+//                }
+//                if (key.isConnectable())
+//                {
+//                    handler.connect(connect);
+//                }
             }
         }
     }
